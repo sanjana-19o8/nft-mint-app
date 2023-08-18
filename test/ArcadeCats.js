@@ -2,13 +2,13 @@ const {expect} = require('chai');
 const hre = require("hardhat");
 const {it} = require('mocha');
 
-describe("myNFT", function() {
+describe("ArcadeCats", function() {
     it("Should mint and transfer an NFT to a valid address", async function() {
         const AcradeCats = await hre.ethers.getContractFactory("myNFT");
         const acradecats = await AcradeCats.deploy();
         await acradecats.deployed();
 
-        const recipient = '0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199';
+        const recipient = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
         const metadataURI = 'QmWWTdhvY3g493K15a5VjSTTnaxmDPf1jsLt4iJigzD71E';
 
         let balance = await acradecats.balanceOf(recipient);
