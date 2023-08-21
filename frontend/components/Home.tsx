@@ -9,6 +9,13 @@ import WalletBal from './WalletBal'
 import ArcadeCats from '@/artifacts/contracts/ArcadeCats.sol/ArcadeCats.json'
 
 import { contract as addr } from '@/scripts/deploy'
+
+declare global {
+  interface Window {
+      ethereum?: any,
+  }
+}
+
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();  // get end user
 const contract = new ethers.Contract(addr, ArcadeCats.abi, signer); // get smart contract
