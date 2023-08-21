@@ -1,4 +1,4 @@
-import { Install, Home } from '@/components'
+import { Install, Home } from '@/frontend/components'
 import { ExternalProvider, JsonRpcFetchFunc } from "@ethersproject/providers";
 
 declare global {

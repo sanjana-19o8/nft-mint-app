@@ -1,4 +1,5 @@
 const hre = require("hardhat");
+var contract = '';
 
 async function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -13,6 +14,7 @@ async function deploy() {
     console.log('deploying');
 
     console.log("NFT deployed to address: ", ARCNFT.target);
+    contract = ARCNFT.target;
     
     await sleep(30*1000);
 
@@ -31,3 +33,5 @@ deploy()
     .catch((err) => {
         process.exit(1);
     });
+
+export {contract};

@@ -1,23 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import '@/public/placeholder.jpg'
 import { useState, useEffect } from 'react'
 import styles from '@/styles/Home.module.css'
 import { Inter } from 'next/font/google'
-import WalletBal from './WalletBal'
-import ArcadeCats from '@/artifacts/contracts/myNFT.sol/ArcadeCats.json'
-import { ethers } from 'ethers'
 
-const addr = "0xFd8Bb30F3830F3b532d6e1905C3A51a930561Bc2";
+import { ethers } from 'ethers'
+import WalletBal from './WalletBal'
+import ArcadeCats from '@/artifacts/contracts/ArcadeCats.sol/ArcadeCats.json'
+
+import { contract as addr } from '@/scripts/deploy'
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-// get the end user
-const signer = provider.getSigner();
-// get the smart contract
-const contract = new ethers.Contract(addr, ArcadeCats.abi, signer);
+const signer = provider.getSigner();  // get end user
+const contract = new ethers.Contract(addr, ArcadeCats.abi, signer); // get smart contract
 
 const inter = Inter({ subsets: ['latin'] })
 
-function NFTImage({ tokenId, getCount }) {
+function NFTImage({ tokenId, getCount }: {tokenId: any, getCount: any}) {
   const contentId = 'PINATA_CONTENT_ID';
   const metadataURI = `${contentId}/${tokenId}.json`;
   const imageURI = `https://gateway.pinata.cloud/ipfs/${contentId}/${tokenId}.png`;
